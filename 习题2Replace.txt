@@ -1,0 +1,42 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<assert.h> 
+#include<windows.h>
+char* change(char* str) 
+{
+	assert(str != NULL);//断言，判断str知否指向空 
+	char* pstr = str;//由于str要进行变化，以后还要用到，所以先把他用pstr存起来 
+	int space_count = 0;//计数器 
+	char* end = NULL;
+	char* end_new = NULL;
+	while (*str++ != '\0')
+	{
+		if (*str == ' ')
+			space_count++;//进行空格计数 
+	}
+	end = str;
+	end_new = end + 2 * space_count;
+	str = pstr;
+	while (end != end_new)//当新结束指针和原结束指针不相等时 
+	{
+		if (*end == ' ')//发现空格，变为“%20” 
+		{
+			*end_new-- = '0';
+			*end_new-- = '2';
+			*end_new-- = '%';
+			end--;
+		}
+		else//否则进行赋值 
+		{
+			*end_new-- = *end--;
+		}
+	}
+	return pstr;//将变化后的字符串的首地址返回 
+}
+int main()
+{
+	char str[128] = "welcome to my home";
+	printf("%s", change(str));
+	system("pause");
+	return 0;
+}
