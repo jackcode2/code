@@ -1,0 +1,142 @@
+#include<iostream>
+#include<stdio.h> 
+#include<tchar.h>
+using namespace std;
+
+//链表结构
+struct ListNode
+{
+    int m_nValue;
+    ListNode* m_pNext;
+};
+
+//创建一个链表结点
+ListNode* CreateListNode(int value)
+{
+    ListNode* pNode = new ListNode();
+    pNode->m_nValue = value;
+    pNode->m_pNext = NULL;
+
+    return pNode;
+}
+
+//输出链表中的某一结点的值
+void PrintListNode(ListNode* pNode)
+{
+    if(pNode == NULL)
+            printf("The node is NULL\n");
+    else
+            printf("The key in node is %d.\n", pNode->m_nValue);
+}
+
+//输出链表 
+void PrintList(ListNode* pHead)
+{
+    ListNode *pNode = pHead;
+    while(pNode != NULL)
+    {
+        cout << pNode->m_nValue<< " ";
+        pNode = pNode->m_pNext;
+    }
+    cout<<endl;
+}
+
+//删除结点 
+void DestroyList(ListNode* pHead)
+{
+    ListNode* pNode = pHead;
+    while(pNode != NULL)
+    {
+        pHead = pHead->m_pNext;
+        delete pNode;
+        pNode = pHead;
+    }
+}
+
+//往链表末尾添加结点
+/*
+注意这里pHead是一个指向指针的指针，在主函数中一般传递的是引用。
+因为如果要为链表添加结点，那么就会修改链表结构，所以必须传递引用才能够保存修改后的结构。
+*/
+void AddToTail(ListNode** pHead, int value)
+{
+    ListNode* pNew = new ListNode();
+    pNew->m_nValue = value;
+    pNew->m_pNext = NULL;
+
+    if(*pHead == NULL)
+    {
+        *pHead = pNew;
+    }
+    else
+    {
+        ListNode* pNode = *pHead;
+        while(pNode->m_pNext != NULL)
+            pNode = pNode->m_pNext;
+
+        pNode->m_pNext = pNew;
+    }
+}
+
+
+//链接两个结点 
+//void ConnectListNodes(ListNode* pCurrent, ListNode* pNext)
+//{
+//    if(pCurrent == NULL)
+//    {
+//        printf("Error to connect two nodes.\n");
+//        exit(1);
+//    }
+//    pCurrent->m_pNext = pNext;
+//}
+
+//防御性编程，鲁棒性更好
+ListNode* FindKthToTail(ListNode* pListHead, unsigned int k)
+{
+    if(pListHead == NULL || k == 0)
+            return NULL;
+
+    ListNode *pAhead = pListHead;
+    ListNode *pBehind = NULL;
+
+    for(unsigned int i = 0 ; i < k- 1 ; i ++)
+    {
+        if(pAhead->m_pNext != NULL)
+            pAhead = pAhead->m_pNext;
+        else
+            return NULL;
+    }
+    
+    pBehind = pListHead;
+    while(pAhead->m_pNext != NULL)
+    {
+        pAhead = pAhead->m_pNext;
+        pBehind = pBehind->m_pNext;
+    }
+
+    return pBehind;
+}
+
+int main()
+{
+    //创建结点
+    ListNode* pNode1=CreateListNode(1);//创建一个结点
+    PrintList(pNode1);//打印
+    //往链表中添加新结点
+    AddToTail(&pNode1, 2);//为链表添加一个结点
+    AddToTail(&pNode1, 3);//为链表添加一个结点
+    AddToTail(&pNode1, 4);//为链表添加一个结点
+    AddToTail(&pNode1, 5);//为链表添加一个结点
+    AddToTail(&pNode1, 6);//为链表添加一个结点
+    AddToTail(&pNode1, 7);//为链表添加一个结点
+    //打印链表
+    PrintList(pNode1);//打印
+    //反转链表
+    ListNode* KthNode=FindKthToTail(pNode1,3);
+
+    PrintListNode(KthNode);
+
+    DestroyList(pNode1);
+    
+    return 0;
+}
