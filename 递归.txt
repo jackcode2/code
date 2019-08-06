@@ -1,0 +1,190 @@
+1.#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+int Fibonacci(int n)
+{
+	if (n <= 0)
+		return 0;
+	if (n == 1 || n == 2)
+		return 1;
+	return Fibonacci(n - 1) + Fibonacci(n - 2);
+}
+int main()
+{
+	int n = 0;
+	printf("请输入n\n");
+	scanf("%d", &n);
+	int input = Fibonacci(n);
+	printf("%d\n", input);
+	system("pause");
+	return 0;
+}
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+int Fibonacci(int n)
+{
+	int a =1; int b = 1; int c ;
+	if (n <= 0)
+		return 0;
+	if (n == 1 || n == 2)
+		return 1;
+	for (int i = 3; i <= n;++i)
+	{
+		c = a + b;
+		a = b;
+		b= c;
+
+	}
+	return b;
+}
+int main()
+{
+	int n = 0;
+	printf("请输入n\n");
+	scanf("%d", &n);
+	int input = Fibonacci(n);
+	printf("%d\n", input);
+	system("pause");
+	return 0;
+}
+2.#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+int Test(int n,int k)
+{
+	if (k == 0)
+	{
+		return 1;
+	}
+	else
+	{
+		return n*Test(n, k - 1);
+	}
+}
+
+int main()
+{
+	int n = 0;
+	int k = 0;
+	printf("请输入n和k的值：\n");
+	scanf("%d%d", &n, &k);
+	int ret = Test(n, k);
+	printf("%d\n", ret);
+	system("pause");
+	return 0;
+}
+3.#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+int DigitSum(int n)
+{
+	int sum = 0;
+	int m = 0;
+	if (n != 0)
+	{
+		m = n % 10;
+		n = n / 10;
+		sum = m + DigitSum(n);
+	}
+	return sum;
+}
+int main()
+{
+	int i = 0;
+	printf("请输入一个数字\n");
+	scanf("%d", &i);
+	printf("各位数之和为：%d\n", DigitSum(i));
+	system("pause");
+	return 0;
+}
+4.#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+void reverse_string(char * string)
+{
+ if(*(++string) != '\0')  
+{
+	reverse_string(string);
+} 
+printf("%c",*(string-1));
+}
+int main()
+	{ 
+		char*p="abcdef"; 
+		reverse_string(p); 
+		printf("\n"); 
+		system("pause");
+		return 0;
+	}
+5.#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+int mystrlen(char* string)
+{
+	int count = 0;
+	while (*string != '\0')
+	{
+		count++;
+		string++;
+	}
+	return count;
+}
+int main()
+{
+	char string[] = "abcdefgh";
+	int ret = mystrlen(string);
+	printf("%d\n", ret);
+	system("pause");
+	return 0;
+}
+6.#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+int Test(int n)
+{
+	if (n == 0)
+	{
+		return 0;
+	}
+	else if (n==1)
+	{
+		return 1;
+	}
+	else
+	{
+		return n*Test(n - 1);
+	}
+}
+int main()
+{
+	int n = 0; int sum = 0;
+	printf("请输入n的值：\n");
+	scanf("%d", &n);
+	sum = Test(n);
+	printf("%d", sum);
+	system("pause");
+	return 0;
+}
+#define _CRT_SECURE_NO_WARNINGS 1
+#include<stdio.h>
+#include<stdlib.h>
+int Test(int n)
+{  
+	int tmp = 1;
+		while (n > 0)
+		{
+			tmp *= n--;
+		}
+		return tmp;	
+}
+int main()
+{
+	int n = 0; int sum = 0;
+	printf("请输入n的值：\n");
+	scanf("%d", &n);
+	sum = Test(n);
+	printf("%d", sum);
+	system("pause");
+	return 0;
+}
