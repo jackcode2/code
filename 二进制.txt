@@ -1,0 +1,20 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+int main(){
+	int n = 0;
+	printf("请输入一个数 ");
+	scanf("%u", &n);
+	int count = 0;
+	while (n)
+	{
+		if (n & 1)
+		{
+			count++;
+		}
+		n = n >> 1;
+	}
+	printf("%d\n", count);
+	system("pause");
+	return 0;
+}
