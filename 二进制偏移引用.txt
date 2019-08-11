@@ -1,0 +1,16 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+int fun(int x){
+	int count = 0;
+	while (x){
+		count++;
+		x = x&(x - 1);
+	}
+	return count;
+}
+int main(){
+	printf("fun(2017)=%d\n", fun(2019));
+	system("pause");
+	return 0;
+}
