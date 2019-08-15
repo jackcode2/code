@@ -1,0 +1,22 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+int fun(int a[], int k)
+{
+	int min = a[0];
+	for (int i = 0; i < k; i++)
+	{
+		if (a[i] < min)
+		{
+			min = a[i];
+		}
+	}
+	return min;
+}
+int main(){
+	int a[] = { 2, 2, 1, 4, 2, 6, 8, 6, 3 };
+	int r=fun(a, 8);
+	printf("%d\n", r);
+	system("pause");
+	return 0;
+}
