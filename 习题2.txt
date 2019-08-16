@@ -1,0 +1,19 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+int main(){
+	int s = 0, n;
+	for (n = 0; n < 4; n++)
+	{
+		switch (n)
+		{
+		default:s += 4;
+		case 1:s += 1;
+		case 2:s += 2;
+		case 3:s += 3;
+		}
+	}
+	printf("%d\n", s);
+	system("pause");
+	return 0;
+}
