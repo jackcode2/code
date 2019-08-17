@@ -1,0 +1,14 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+void fun(int x,int y,int *c,int *d){
+	*c = x + y;
+	*d = x - y;
+}
+int main(){
+	int a = 4, b = 3, c = 0, d = 0;
+	fun(a, b, &c, &d);
+	printf("%d %d\n", c, d);
+	system("pause");
+	return 0;
+}
