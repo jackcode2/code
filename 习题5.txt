@@ -1,0 +1,20 @@
+int find(int* a, int n){
+	if (a == NULL){
+		return -1;
+	}
+	int value = a[0];
+	int count = 1;
+	for (int i = 1; i < n; i++){
+		if (value == a[i]){
+			count++;
+		}
+		else{
+			count--;
+			if (count < 0){
+				value = a[i];
+				count = 1;
+			}
+		}
+	}
+	return value;
+}
