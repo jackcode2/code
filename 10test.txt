@@ -1,0 +1,111 @@
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+int main()
+{
+	int a, x;
+	for (a = 0, x = 0; a <= 1 && !x++; a++)
+	{
+		a++;
+	}
+	printf("%d %d", a, x);
+	system("pause");
+	return 0;
+}
+备注 2 1
+
+
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+int main()
+{
+	int a[] = { 1, 2, 3, 4, 5 };
+	int *p1 = (int *)(&a + 1);
+	int *p2 = (int *)((int)a + 1);
+	int *p3 = (int *)(a + 1);
+	printf("%d, %x, %d\n", p1[-1], p2[0], p3[1]);
+		system("pause");
+	return 0;
+}
+备注 5，2000000，3
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+int main()
+{
+	char *str[3] = { "stra", "strb", "strc" };
+	char *p = str[0];
+	int i = 0;
+	while (i < 3)
+	{
+		printf("%s ", p++);
+		i++;
+	}
+		system("pause");
+	return 0;
+}
+备注 stra tra ra
+
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+char *myString()
+{
+	char buffer[6] = { 0 };
+	char *s = "Hello World!";
+	for (int i = 0; i < sizeof(buffer)-1; i++)
+	{
+		buffer[i] = *(s + i);
+	}
+	return buffer;
+}
+int main()
+{
+	printf("%s\n", myString());
+	system("pause");
+	return 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+#define _CRT_SECURE_NO_WARNINGS 1
+#include <stdio.h>
+#include<windows.h>
+int main()
+{
+	char a[1000];
+	int i;
+	for (i = 0; i < 1000; i++)
+	{
+		a[i] = (char)(-1 - i);
+	}
+	printf("%d\n", strlen(a));
+	system("pause");
+	return 0;
+}
+备注 255
+
+
